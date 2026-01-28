@@ -128,7 +128,7 @@ const steps = [
   {
     id: "03",
     title: "Assessment",
-    desc: "We perform skill-based and personality assessments to evaluate candidate capabilitiesSkill Evaluation",
+    desc: "We perform skill-based and personality assessments to evaluate candidate capabilities Skill Evaluation",
     icon: Users,
     color: "text-violet-600",
     bg: "bg-violet-100",
@@ -159,8 +159,10 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="relative py-24 pt-8 bg-gradient-to-b from-slate-50 via-white to-slate-100 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4">
+    
+    <section className="relative   my-8  bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden">
+
+      <div className="max-w-7xl mx-auto px-4 ">
         
         {/* Header */}
         <div className="text-center mb-20">
@@ -229,6 +231,7 @@ const HowItWorks = () => {
           </div>
         </div>
       </div>
+    
     </section>
   );
 };

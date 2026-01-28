@@ -27,6 +27,7 @@ const Routing = () => {
         <Route element={<Home view="OurExpertise" />} />
         <Route element={<Home view="TrendingDestinations" />} />
         <Route element={<Home view="HowItWorks"/>}/>
+        
         <Route element={<Home view="FeaturesSection" />} />
 
         {/* Services */}
@@ -44,7 +45,7 @@ const Routing = () => {
         {/* personel Details */}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/" element={<ScrollToTop/>}/>
+        {/* <Route path="/" element={<ScrollToTop/>}/> */}
 
 
 
@@ -57,6 +58,7 @@ const Routing = () => {
 
 const App = () => (
   <BrowserRouter>
+    <ScrollToTop />
     <Routing />
   </BrowserRouter>
 );

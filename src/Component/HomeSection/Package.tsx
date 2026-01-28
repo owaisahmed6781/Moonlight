@@ -5,9 +5,9 @@ import { ArrowUpRight } from "lucide-react";
 import image1 from "../../Media/Offer/Dubai(UAE).jpg"
 import image2 from "../../Media/Offer/Thailand.jpg"
 import image3 from "../../Media/Offer/Bali.jpg"
-import image4 from "../../Media/Offer/Singapore.jpg"
+import image4 from "../../Media/Offer/Singapore.png"
 import image5 from "../../Media/Offer/Maldives-Couples-45.jpg"
-import image6 from "../../Media/Offer/Switzerland.jpg"
+import image6 from "../../Media/Offer/Switzerland.png"
 
 const destinations = [
   {
@@ -114,11 +114,11 @@ const TrendingDestinations = () => {
     <section className="relative py-24 pt-8 bg-gradient-to-b from-slate-50 via-white to-slate-100 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 ">
         <h2
-        className="text-4xl mb-20 md:text-6xl text-center font-extrabold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
+        className="text-4xl py-10  md:text-6xl text-center font-extrabold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
           Trending Destinations
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-10 ">
           {destinations.map((d) => (
             <DestinationCard key={d.name} {...d} />
           ))}

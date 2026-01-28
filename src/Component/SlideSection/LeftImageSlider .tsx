@@ -131,6 +131,7 @@ import image3 from "../../Media/HomeSlide/tawaf_history2-1024x576.jpg"
 import image4 from "../../Media/Ticket/Air-India.jpg"
 import image5 from "../../Media/HomeSlide/Embassy-Attestation-1024x1024.png"
 import image6 from "../../Media/HomeSlide/travel-insurance.jpg"
+import { useNavigate } from "react-router-dom";
 
 const slides = [
   {
@@ -138,30 +139,36 @@ const slides = [
     title: "Visa & Emmigration Made Easy",
     subtitle: "Visa Services",
     button: "Apply Today",
+     route: "/Services"
   },
   {
     image: image2,
     title: "Dream Holidays, Best Prices",
     subtitle: "Holiday Packages",
     button: "View Packages",
+    route: "/Package",
   },
   {
     image: image3,
     title: "Hajj & Umrah",
     subtitle: "Hajj & Umrah Packages",
     button: "View Packages",
+    // route: "/Package",
   },
   {
     image: image4,
     title: "Air Ticketing",
     subtitle: "Air Ticket Services",
     button: "Book Now",
+    route: "/Ticket",
+
   },
   {
     image: image5,
     title: "Document Attestation",
     subtitle: "Certificate & Embassy Attestation",
     button: "Get Started",
+     route: "/Attestation"
   },
   {
     image:  image6,
@@ -179,6 +186,9 @@ const slides = [
 
 const LeftImageSlider: React.FC = () => {
   const [index, setIndex] = useState(0);
+   const navigate=useNavigate()
+   
+   
 
   // Auto-slide every 5 seconds
   useEffect(() => {
@@ -187,6 +197,17 @@ const LeftImageSlider: React.FC = () => {
     }, 6000);
     return () => clearInterval(timer);
   }, []);
+
+
+
+    const handleCardClick = (service: typeof slides[0]) => {
+    if (service.route) {
+       window.scrollTo({ top: 0, behavior: "instant" });
+      navigate(service.route, { state: { fromOurExpertise: true } });
+      console.log(service.title, "clicked");
+    
+    }
+  };
 
   return (
     <div className="relative w-full h-screen overflow-hidden min-w-[300px]">
@@ -227,6 +248,7 @@ const LeftImageSlider: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+      
           className="max-w-xl space-y-4 sm:space-y-5 md:space-y-6 text-white"
         >
           <p className="uppercase tracking-widest text-cyan-400 font-semibold text-sm sm:text-base">
@@ -237,7 +259,10 @@ const LeftImageSlider: React.FC = () => {
             {slides[index].title}
           </h1>
 
-          <button className="inline-flex items-center gap-2 sm:gap-3 rounded-full bg-cyan-500 px-6 sm:px-8 py-2 sm:py-4 font-semibold text-sm sm:text-base hover:bg-cyan-600 transition">
+          <button
+          // onClick={ButtonCallBack}
+           onClick={() => handleCardClick(slides[index])}
+           className="inline-flex items-center cursor-pointer gap-2 sm:gap-3 rounded-full bg-cyan-500 px-6 sm:px-8 py-2 sm:py-4 font-semibold text-sm sm:text-base hover:bg-cyan-600 transition">
             {slides[index].button}
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>

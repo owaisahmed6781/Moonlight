@@ -459,7 +459,7 @@ const InfoCard: React.FC<{
   action: string;
   link?: string;
 }> = ({ icon, title, subtitle, value, action, link }) => (
-  <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition">
+  <div className="p-6 bg-white rounded-xl shadow hover:shadow-lg transition ">
     <div className="flex items-center mb-4 text-blue-600">{icon}</div>
     <h4 className="font-bold text-lg mb-1">{title}</h4>
     <p className="text-sm text-gray-500 mb-2">{subtitle}</p>
@@ -530,14 +530,14 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-50 text-slate-900 mt-6">
+    <div className="relative min-h-screen bg-slate-50 text-slate-900 overflow-x-hidden">
       {/* Background Effects */}
       <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-blue-50/50 to-transparent" />
       <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
       <div className="absolute bottom-[10%] left-[-5%] w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl" />
 
       {/* Header */}
-      <div className="relative pt-24 pb-16 px-4 text-center">
+      <div className="relative pt-4 pb-16 px-4 text-center">
         <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
           We’d love to{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
@@ -555,13 +555,13 @@ const Contact: React.FC = () => {
           <InfoCard
             icon={<MapPin className="w-6 h-6" />}
             title="Visit our Office"
-            subtitle="Headquarters"
+            subtitle="Registered Office"
             value="H-45/B, Abul Fazal Enclave-1, Jamia Nagar, New Delhi 110025"
             action="View on Map"
             link="https://maps.google.com?q=Abul+Fazal+Enclave-1,+Jamia+Nagar,+New+Delhi"
           />
           <InfoCard
-            icon={<Mail className="w-6 h-6" />}
+            icon={<Mail className="w-6 h-6 cursor-pointer" />}
             title="Email Us"
             subtitle="Support Team"
             value="Shail.moonlight@gmail.com"
@@ -571,7 +571,7 @@ const Contact: React.FC = () => {
           <InfoCard
             icon={<Phone className="w-6 h-6" />}
             title="Call Us"
-            subtitle="Mon–Fri | 8am–5pm"
+            subtitle="Mon–Sat | 9am–7pm"
             value="+91 8587860420"
             action="Call Now"
             link="tel:+918587860420"
@@ -579,90 +579,75 @@ const Contact: React.FC = () => {
         </div>
 
         {/* Form + Map */}
-        <div className="grid lg:grid-cols-12 gap-8 bg-white rounded-3xl shadow-xl border overflow-hidden">
-          {/* Form */}
-          <div className="lg:col-span-5 p-8">
-            <h3 className="text-2xl font-bold mb-4">Send us a message</h3>
+       <div className="grid lg:grid-cols-12 gap-8 bg-white rounded-3xl shadow-xl border overflow-hidden">
 
-            {/* Success / Error Message */}
-            {successMsg && (
-              <div className="mb-4 rounded-lg bg-green-50 border border-green-200 p-3 text-green-700 font-medium">
-                {successMsg}
-              </div>
-            )}
-            {errorMsg && (
-              <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-3 text-red-700 font-medium">
-                {errorMsg}
-              </div>
-            )}
+  {/* LEFT – FORM */}
+  <div className="lg:col-span-5 p-4">
+    <h3 className="text-2xl font-bold mb-4">Send us a message</h3>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                className="w-full border rounded-md p-2"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                className="w-full border rounded-md p-2"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Your Phone"
-                className="w-full border rounded-md p-2"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                className="w-full border rounded-md p-2"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                required
-              />
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                rows={5}
-                className="w-full border rounded-md p-2"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                required
-              />
+    {successMsg && (
+      <div className="mb-4 rounded-lg bg-green-50 border border-green-200 p-3 text-green-700 font-medium">
+        {successMsg}
+      </div>
+    )}
+    {errorMsg && (
+      <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-3 text-red-700 font-medium">
+        {errorMsg}
+      </div>
+    )}
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="inline-flex items-center gap-2 px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition disabled:opacity-60"
-              >
-                {loading ? "Sending..." : "Send Message"}
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <input className="w-full border rounded-md p-2" placeholder="Your Name" required />
+      <input className="w-full border rounded-md p-2" placeholder="Your Email" required />
+      <input className="w-full border rounded-md p-2" placeholder="Your Phone" />
+      <input className="w-full border rounded-md p-2" placeholder="Subject" required />
+      <textarea rows={5} className="w-full border rounded-md p-2" placeholder="Your Message" required />
 
-          {/* Map */}
-          <div className="lg:col-span-7 relative min-h-[400px]">
-            <iframe
-              title="map"
-              src="https://www.google.com/maps?q=Abul+Fazal+Enclave-1,+Jamia+Nagar,+New+Delhi&output=embed"
-              className="absolute inset-0 min-w-full h-full grayscale hover:grayscale-0 transition"
-              loading="lazy"
-            />
-          </div>
-        </div>
+      <button className="inline-flex items-center  gap-2 px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+        Send Message <Send className="w-4 h-4 " />
+      </button>
+    </form>
+  </div>
+
+  {/* RIGHT – INQUIRY + MAP */}
+  <div className="lg:col-span-7 relative">
+
+    {/* INQUIRY CONTENT */}
+    <div className="p-6  h-full bg-slate-50">
+      <h4 className="text-lg font-semibold text-slate-800">
+      Have an inquiry?
+      </h4>
+      <p className="text-sm text-slate-600 mt-1">
+Fill out the inquiry form and our team will get back to you via email or phone as soon as possible.        Fill out the inquiry form and our team will contact you as soon as possible.
+      </p>
+
+      <div className="relative min-h-[350px] mt-12">
+  <iframe
+    title="map"
+    src="https://www.google.com/maps?q=Abul+Fazal+Enclave-1,+Jamia+Nagar,+New+Delhi&output=embed"
+    className="absolute top-1/2 left-1/2 h-full w-1/2
+               -translate-x-1/2 -translate-y-1/2
+               grayscale hover:grayscale-0 transition"
+    loading="lazy"
+  />
+</div>
+
+    </div>
+
+    {/* MAP */}
+    {/* <div className="relative min-h-[350px]">
+      <iframe
+        title="map"
+        src="https://www.google.com/maps?q=Abul+Fazal+Enclave-1,+Jamia+Nagar,+New+Delhi&output=embed"
+        className="absolute inset-0  flex justify-center items-center w-1/2 h-full grayscale hover:grayscale-0 transition"
+        loading="lazy"
+      />
+    </div> */}
+
+  </div>
+
+</div>
+
       </div>
     </div>
   );

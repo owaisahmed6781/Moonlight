@@ -1,54 +1,92 @@
-// const TopHeader = () => {
-//   return (
-//     <header className="bg-slate-900 text-white px-5 py-2 text-sm sticky top-0 z-50">
-//       <div className="flex justify-center  gap-50">
-//         <span>📧 Email: Shail.moonlight@gmail.com</span>
-//         <span>📞 Mobile: +91 8587860420</span>
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default TopHeader;
 
 
 // import React from "react";
 // import { motion } from "framer-motion";
 // import { Mail, Phone } from "lucide-react";
+// import {
+//   FaInstagram,
+//   FaTwitter,
+//   FaFacebookF,
+//   FaLinkedinIn,
+// } from "react-icons/fa";
 
 // const TopHeader: React.FC = () => {
 //   return (
-//     <header className="bg-slate-950 text-white  top-0 z-50 fixed  w-full">
+//     <header className="bg-slate-700 text-white fixed top-0 z-50 w-full  ">
 //       <div className="max-w-7xl mx-auto px-4">
 //         <div className="flex items-center justify-between h-11">
 
-//           {/* Email */}
-//           <motion.a
-//             href="mailto:Shail.moonlight@gmail.com"
-//             className="flex items-center gap-2 text-sm text-white/80 hover:text-cyan-400 transition"
-//             whileHover={{ x: 2 }}
-//           >
-//             <div className="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
-//               <Mail className="w-4 h-4 text-cyan-400" />
-//             </div>
-//             <span className="hidden sm:inline">
-//               Shail.moonlight@gmail.com
-//             </span>
-//           </motion.a>
+//           {/* LEFT SIDE – Email & Phone */}
+//           <div className="flex items-center gap-6">
+//             {/* Email */}
+//             <motion.a
+//               href="mailto:Shail.moonlight@gmail.com"
+//               className="flex items-center gap-2 text-sm text-white/80 hover:text-cyan-400 transition"
+//               whileHover={{ x: 2 }}
+//             >
+//               <div className="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
+//                 <Mail className="w-4 h-4 text-cyan-400" />
+//               </div>
+//            <a
+//   href="mailto:Shail.moonlight@gmail.com"
+//   className="hidden sm:inline hover:underline"
+// >
+//   Shail.moonlight@gmail.com
+// </a>
 
-//           {/* Call */}
-//           <motion.a
-//             href="tel:+918587860420"
-//             className="flex items-center gap-2 text-sm text-white/80 hover:text-green-400 transition"
-//             whileHover={{ x: 2 }}
-//           >
-//             <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
-//               <Phone className="w-4 h-4 text-green-400" />
-//             </div>
-//             <span className="hidden sm:inline">
-//               +91 8587860420
-//             </span>
-//           </motion.a>
+
+//             </motion.a>
+
+//             {/* Phone */}
+//             <motion.a
+//               href="tel:+918587860420"
+//               className="flex items-center gap-2 text-sm text-white/80 hover:text-green-400 transition"
+//               whileHover={{ x: 2 }}
+//             >
+//               <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+//                 <Phone className="w-4 h-4 text-green-400" />
+//               </div>
+//               <span className="hidden sm:inline">
+//                 +91 8587860420
+//               </span>
+//             </motion.a>
+//           </div>
+
+//           {/* RIGHT SIDE – Social Icons */}
+//           <div className="flex items-center gap-3">
+//             <motion.a
+//               href="#"
+//               whileHover={{ y: -2 }}
+//               className="w-8 h-8 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400 hover:bg-pink-500/30 transition"
+//             >
+//               <FaInstagram size={14} />
+//             </motion.a>
+
+//             <motion.a
+//               href="#"
+//               whileHover={{ y: -2 }}
+//               className="w-8 h-8 rounded-lg bg-sky-500/20 flex items-center justify-center text-sky-400 hover:bg-sky-500/30 transition"
+//             >
+//               <FaTwitter size={14} />
+//             </motion.a>
+
+//             <motion.a
+//               href="#"
+//               whileHover={{ y: -2 }}
+//               className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 hover:bg-blue-500/30 transition"
+//             >
+//               <FaFacebookF size={14} />
+//             </motion.a>
+
+//             {/* LinkedIn */}
+//             <motion.a
+//               href="#"
+//               whileHover={{ y: -2 }}
+//               className="w-8 h-8 rounded-lg bg-blue-600/20 flex items-center justify-center text-blue-500 hover:bg-blue-600/30 transition"
+//             >
+//               <FaLinkedinIn size={14} />
+//             </motion.a>
+//           </div>
 
 //         </div>
 //       </div>
@@ -57,6 +95,8 @@
 // };
 
 // export default TopHeader;
+
+
 
 import React from "react";
 import { motion } from "framer-motion";
@@ -70,7 +110,7 @@ import {
 
 const TopHeader: React.FC = () => {
   return (
-    <header className="bg-slate-700 text-white fixed top-0 z-50 w-full ">
+    <header className="bg-slate-700 text-white fixed top-0 z-50 w-full">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-11">
 
@@ -85,14 +125,9 @@ const TopHeader: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
                 <Mail className="w-4 h-4 text-cyan-400" />
               </div>
-           <a
-  href="mailto:Shail.moonlight@gmail.com"
-  className="hidden sm:inline hover:underline"
->
-  Shail.moonlight@gmail.com
-</a>
-
-
+              <span className="hidden sm:inline hover:underline">
+                Shail.moonlight@gmail.com
+              </span>
             </motion.a>
 
             {/* Phone */}
@@ -104,16 +139,16 @@ const TopHeader: React.FC = () => {
               <div className="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
                 <Phone className="w-4 h-4 text-green-400" />
               </div>
-              <span className="hidden sm:inline">
-                +91 8587860420
-              </span>
+              <span className="hidden sm:inline">+91 8587860420</span>
             </motion.a>
           </div>
 
           {/* RIGHT SIDE – Social Icons */}
           <div className="flex items-center gap-3">
             <motion.a
-              href="#"
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ y: -2 }}
               className="w-8 h-8 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400 hover:bg-pink-500/30 transition"
             >
@@ -121,7 +156,9 @@ const TopHeader: React.FC = () => {
             </motion.a>
 
             <motion.a
-              href="#"
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ y: -2 }}
               className="w-8 h-8 rounded-lg bg-sky-500/20 flex items-center justify-center text-sky-400 hover:bg-sky-500/30 transition"
             >
@@ -129,23 +166,25 @@ const TopHeader: React.FC = () => {
             </motion.a>
 
             <motion.a
-              href="#"
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ y: -2 }}
               className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 hover:bg-blue-500/30 transition"
             >
               <FaFacebookF size={14} />
             </motion.a>
 
-            {/* LinkedIn */}
             <motion.a
-              href="#"
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ y: -2 }}
               className="w-8 h-8 rounded-lg bg-blue-600/20 flex items-center justify-center text-blue-500 hover:bg-blue-600/30 transition"
             >
               <FaLinkedinIn size={14} />
             </motion.a>
           </div>
-
         </div>
       </div>
     </header>

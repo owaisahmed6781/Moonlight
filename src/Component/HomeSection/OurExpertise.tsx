@@ -350,7 +350,7 @@ const OurExpertise = () => {
             Our Expertise
           </h2>
           <p className="mt-6 text-xl text-slate-600 max-w-3xl mx-auto">
-            End-to-end solutions delivered with trust, precision, and global
+            End-to-end solutions delivered with trust, precision and global
             excellence.
           </p>
         </motion.div>
@@ -367,12 +367,11 @@ const OurExpertise = () => {
               onClick={() => handleCardClick(s)}
               className="group relative rounded-3xl border border-white/30 bg-white/70 backdrop-blur-xl p-10 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
             >
-              {/* Subtle Gradient Background on Hover */}
+         
               <div
                 className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 opacity-0 group-hover:opacity-100 ${s.colorTheme.hoverBg}`}
               />
 
-              {/* Icon Container with Dynamic Colors */}
               <div
                 className={`relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br ${s.colorTheme.iconBg} flex items-center justify-center mb-6 shadow-md ${s.colorTheme.shadow} group-hover:scale-110 transition-transform duration-300`}
               >
@@ -387,7 +386,6 @@ const OurExpertise = () => {
                 {s.desc}
               </p>
 
-              {/* Top Right Arrow Icon */}
               <ArrowUpRight className="absolute top-8 right-8 w-6 h-6 text-slate-300 group-hover:text-slate-900 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all opacity-0 group-hover:opacity-100" />
 
               {/* Bottom Hover Line */}

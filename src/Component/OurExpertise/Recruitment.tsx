@@ -1,6 +1,6 @@
 
 
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import HowItWorks from "../HomeSection/Work";
 
@@ -15,12 +15,12 @@ import image6 from "../../Media/Recruitment/Oil & Gas Workforce.png";;
 
 // Map each department tag to its image
 const tagImageMap: Record<string, string> = {
-  "Construction Workforce":image1,
-  "Hospitality & Hotel Staff":image2 ,
+  "Construction Workforce": image1,
+  "Hospitality & Hotel Staff": image2,
   "Security & Facility Management": image3,
-  "Skilled & Unskilled Workers":image4 ,
-  "Technical & Non-Technical Staff":image5 ,
-  "Oil & Gas Workforce":image6 ,
+  "Skilled & Unskilled Workers": image4,
+  "Technical & Non-Technical Staff": image5,
+  "Oil & Gas Workforce": image6,
 
 
 };
@@ -31,16 +31,18 @@ type CardProps = {
   title: string;
   description: string;
   tagColor?: string;
+  onReadMore: () => void;
 };
 
-const Card: React.FC<CardProps> = ({ tag, title, description, tagColor = "text-blue-600" }) => {
+const Card: React.FC<CardProps> = ({ tag, title, description, onReadMore, tagColor = "text-blue-600" }) => {
   const imageUrl = tagImageMap[tag] || "/images/default.jpg";
 
   return (
     <div
       className="group bg-white rounded-2xl overflow-hidden
                  border border-slate-200 shadow-sm hover:shadow-2xl
-                 hover:-translate-y-2 transition-all duration-300"
+                 hover:-translate-y-2 transition-all duration-300  cursor-pointer"
+      onClick={onReadMore}
     >
       {/* Image */}
       <div
@@ -64,14 +66,14 @@ const Card: React.FC<CardProps> = ({ tag, title, description, tagColor = "text-b
           {description}
         </p>
 
-        <a
-          href="#"
+        <button
+          onClick={onReadMore}
           className="inline-flex items-center gap-2
-                     text-blue-600 font-medium text-sm
-                     group-hover:gap-3 transition-all"
+          text-blue-600 font-medium text-sm
+          group-hover:gap-3 transition-all cursor-pointer"
         >
           Read More <span className="text-lg">→</span>
-        </a>
+        </button>
       </div>
     </div>
   );
@@ -82,6 +84,9 @@ const Recruitment: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const fromOurExpertise = location.state?.fromOurExpertise || false;
+
+  const [selectedDept, setSelectedDept] = useState<any>(null);
+
   const departments = [
     {
       tag: "Construction Workforce",
@@ -128,56 +133,97 @@ const Recruitment: React.FC = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-br sticky from-slate-50 to-slate-100 py-14">
-      <div className="max-w-7xl mx-auto px-6">
+   
+    <div >
+      <section className="bg-gradient-to-br from-slate-50 to-slate-100 pt-4  " >
+        <div className="max-w-7xl mx-auto px-6">
 
-        <div className="w-full mb-16  ">
 
-          <div className="flex justify-between w-full">
-            <h2 className="text-4xl font-extrabold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent mb-4">
+          <div className="mb-16">
+
+            <h2 className="text-4xl  font-extrabold text-center bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
               Manpower Recruitment
             </h2>
-            {fromOurExpertise && (
-              <button
-                onClick={() => navigate(-1)}
-                className="
-    mb-6 inline-flex items-center gap-2 px-5 py-3 
-    bg-gradient-to-r from-cyan-500 to-indigo-600 
-    text-white font-semibold rounded-xl 
-    shadow-lg hover:shadow-xl 
-    transform hover:-translate-y-1 hover:scale-105 
-    transition-all duration-300 ease-in-out
-  "
-              >
-                ← Go Back
-              </button>
-            )}
+            <div className="w-full flex gap-2  justify-end">
+              {fromOurExpertise && (
+                <button
+                  onClick={() => navigate(-1)}
+                  className="px-6 py-2 bg-slate-600 text-white rounded-xl  "
+                >
+                  Back
+                </button>
+              )}
+            </div>
+
+            <p className="text-slate-600 mt-2 text-center">
+              Explore our comprehensive manpower recruitment solutions,  connecting skilled professionals with businesses across multiple industries.
+            </p>
           </div>
-          <p className="text-slate-600">
-            Explore our comprehensive manpower recruitment solutions, <br /> connecting skilled professionals with businesses across multiple industries.
-          </p>
 
-
+          {/* CARDS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {departments.map((dept) => (
+              <Card
+                key={dept.tag}
+                {...dept}
+                onReadMore={() => setSelectedDept(dept)}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10   mb-10">
-          {departments.map((dept) => (
-            <Card
-              key={dept.tag}
-              tag={dept.tag}
-              title={dept.title}
-              description={dept.description}
-              tagColor={dept.tagColor}
-            />
-          ))}
-        </div>
-      </div>
+        {/* ---------------- MODAL ---------------- */}
+        {selectedDept && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm " onClick={() => setSelectedDept(null)}>
+            <div className="bg-white max-w-xl w-full mx-4 rounded-3xl shadow-2xl p-8 relative animate-fadeIn">
 
-      {fromOurExpertise && (
-        <HowItWorks />
-      )}
+              {/* Close */}
+              <button
+                onClick={() => setSelectedDept(null)}
+                className="absolute top-4 right-4 cursor-pointer text-red-400 hover:text-red-700 text-xl"
+              >
+                ✕
+              </button>
 
-    </section>
+              {/* Image */}
+              <div
+                className="h-56 rounded-2xl bg-cover bg-center mb-6"
+                style={{
+                  backgroundImage: `url(${tagImageMap[selectedDept.tag]})`,
+                }}
+              />
+
+              <span className={`text-sm font-semibold ${selectedDept.tagColor}`}>
+                {selectedDept.tag}
+              </span>
+
+              <h3 className="text-2xl font-bold mt-2">
+                {selectedDept.title}
+              </h3>
+
+              <p className="text-slate-600 mt-4 leading-relaxed">
+                {selectedDept.description}
+              </p>
+
+              <div className="mt-6 text-right">
+                {/* <button
+                onClick={() => setSelectedDept(null)}
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600
+                text-white font-semibold hover:shadow-lg transition"
+              >
+                Close
+              </button> */}
+              </div>
+            </div>
+          </div>
+        )}
+        {fromOurExpertise && (
+        
+    <HowItWorks />
+
+        )}
+      </section>
+    </div>
   );
 };
 
